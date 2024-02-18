@@ -1,3 +1,5 @@
+![alt text](image.png)
+
 > $docker image history web-ping
 
 - Docker 이미지의 히스토리는 이미지가 어떻게 생성되었는지를 보여주는 명령어들의 목록입니다.
