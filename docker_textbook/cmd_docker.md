@@ -1,3 +1,7 @@
+# 참고
+
+> https://docs.docker.com/reference/
+
 ## $ docker ps [option]
 
 > 컨테이너의 실행중인 목록 (ps = Process Status)
@@ -30,15 +34,16 @@
   - `--force`: 확인 메시지 없이 바로 제거
   - `--volumes`: 사용하지 않는 볼륨도 제거
 
-## $ docker images build -t [image name]:[v2] .
+## $ docker images build -t [image name]:[v2] [DockerfileLocation]
 
-- `docker imaages build` Docker이미지를 빌드하는 명령어입니다. Dockerfile이라는 스크립트를 사용하여 이미지를 생성
+- `docker images build` Docker이미지를 빌드하는 명령어입니다. Dockerfile이라는 스크립트를 사용하여 이미지를 생성
 - `-t` tag 옵션 생성될 이미지에 이름 붙이는 옵션
 - `web-ping`:`v2`: 생성될 이미지의 이름 / 버전을 지정
+- `imageName`: 소문자로 작성 > 규칙
 
 ## $ docker run [option]
 
-> 옵션에 따른 컨테이너 실행
+> ## 이미지를 옵션에 따른 컨테이너 생성 및 실행
 
 - `-d` = `--detach` : 컨테이너 백그라운드 실행
 - `-it` = `--iteractive` + `--tty` : (i)표준입력 열고 (t)가상 터미널 할당
@@ -52,6 +57,13 @@
 >
 > > - my_container라는 이름의 컨테이너를 백그라운드에서 실행, host의 8080 포트와 container의 80 포트를 연결, 컨테이너가 종료되면 자동으로 삭제
 
+## $ docker start [option] [containerID]
+
+> docker에 생성된 컨테이너를 백그라운드 실행하는 명령어
+
+- `-a` = `--attach`: container의 output을 연결하여 log 표시
+- `-i` = `--iteractive`: container의 StdIn을 열어 접속상태 유지
+
 ## $ docker commit [option] [containerID/Names] [newImageName:version]]
 
 > 실행중인 컨테이너의 현재상태를 새로운 이미지로 저장
@@ -59,3 +71,15 @@
 - `-a`=`--author`: 커밋의 작성자를 설정, 이미지의 메타데이터에 추가
 - `-m`=`--message`: 커밋에 대한 설명을 추가, 이미지의 메타데이터에 저장
 - `-p`=`--pause`: 커밋을 수행하는 동안 컨테이너를 일시 중지 ,default = active.
+
+# 컨테이너 실행 중 접속 방식
+
+## $ docker `attach` [container_ID/Name]
+
+- 실행되고 있는 컨테이너에 접속 - attach
+- 단, 컨테이너 run시 /bin/bash 사용하지 않았다면 접속 불가.
+
+## $ docker `exec` -it [container_ID/Name] /bin/bash
+
+- 실행중인 컨테이너에 접속, 명령수행가능(일시적) - exec
+- `exit` 명령어로 접속 종료
