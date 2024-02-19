@@ -1,0 +1,26 @@
+# build 시 불필요한 파일 같이 빌드 되는 것 방지
+
+# Dockerfile과 .dockerignore 파일 무시
+Dockerfile
+.dockerignore
+
+# .git 디렉토리와 .gitignore 파일 무시
+.git/
+.gitignore
+
+# 모든 .md 파일 무시
+*.md
+
+# 빌드----------------------------------------------------------------
+# docker image build -t [imageName] [Dockerfile경로]
+# docker image build -t ch0403_img .
+
+# (없다면)도커간 네트워크 생성--------------------------------------------------------
+# docker network create [networkName]
+# docker network create nat
+
+# 컨테이너 실행
+# docker run --name [containerName] -d -p [hostPort]:[containerPort] --network [networkName] [imageName]
+# docker run --name ch0403_container -d -p 801:80 --network nat ch0403_img
+
+

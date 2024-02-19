@@ -52,6 +52,7 @@
 - `-v [hostDirectory:containerDirectory]` = `--volume` : 호스트와 컨테이너 간의 디렉토리 공유
 - `-e [VARIABLE=value]` = `--env` : 컨테이너 내부에서 사용 환경변수를 설정
 - `--rm` : 컨테이너가 종료될 때 자동으로 컨테이너 삭제
+- `--network` : 컨테이너를 실행시 `특정 네트워크에 연결`
 
 > Ex) docker run -d --name my_container -p 8080:80 --rm my_image
 >
@@ -83,3 +84,17 @@
 
 - 실행중인 컨테이너에 접속, 명령수행가능(일시적) - exec
 - `exit` 명령어로 접속 종료
+
+## $ docker `network` create nat
+
+> 컨테이너 간 통신에 사용되는 `nat` 도커 네트워크 생성
+
+- docker network `create` [option]: `새로운 네트워크를 생성`
+  > `--driver` : 네트워크 드라이버를 지정
+  > `--subnet` : 네트워크의 서브넷을 지정
+- docker network `inspect`: `네트워크의 세부 정보를 확인`
+- docker network `ls`: `현재 시스템에 있는 모든 네트워크를 나열`
+- docker network `rm`: `네트워크 삭제`
+- docker network `prune`: 사용하지 않는 네트워크를 `모두 삭제`
+- docker network `connect`: 컨테이너를 네트워크에 `연결`
+- docker network `disconnect`: 컨테이너를 `네트워크에서 연결 해제`
