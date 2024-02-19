@@ -1,0 +1,16 @@
+# build 시 불필요한 파일 같이 빌드 되는 것 방지
+#.gitignore 파일 도 적용된다.
+
+# Dockerfile과 .dockerignore 파일 무시
+Dockerfile
+.dockerignore
+
+# .git 디렉토리와 .gitignore 파일 무시
+.git/
+.gitignore
+
+# 모든 .md 파일 무시
+*.md
+
+
+
