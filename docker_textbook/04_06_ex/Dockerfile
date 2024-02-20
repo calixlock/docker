@@ -1,12 +1,20 @@
-FROM diamol/golang 
+#builder
+FROM diamol/golang as builder 
 
-WORKDIR web
-COPY index.html .
 COPY main.go .
-
 RUN go build -o /web/server
 RUN chmod +x /web/server
 
+#app
+FROM diamol/diamol/base
+
+EXPOSE 80
 CMD ["/web/server"]
 ENV USER=sixeyed
-EXPOSE 80
+
+WORKDIR web
+COPY --from=builder /server .
+COPY index.html .
+
+
+
