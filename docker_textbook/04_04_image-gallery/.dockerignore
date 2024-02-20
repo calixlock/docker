@@ -11,16 +11,20 @@ Dockerfile
 # 모든 .md 파일 무시
 *.md
 
+# 이미지크기 비교
+# docker image ls -f reference=[A_Image] -f reference=[B_Image]
+# docker image ls -f reference=diamol/golang -f reference=ch0404_img
+
 # 빌드----------------------------------------------------------------
 # docker image build -t [imageName] [Dockerfile경로]
-# docker image build -t ch0402_img .
+# docker image build -t ch0404_img .
 
-# 도커간 네트워크 생성--------------------------------------------------------
+# (없다면)도커간 네트워크 생성--------------------------------------------------------
 # docker network create [networkName]
 # docker network create nat
 
 # 컨테이너 실행
 # docker run --name [containerName] -d -p [hostPort]:[containerPort] --network [networkName] [imageName]
-# docker run --name ch0402_container -d -p 800:80 --network nat ch0402_img
+# docker run --name ch0404_container -d -p 802:80 --network nat ch0404_img
 
 

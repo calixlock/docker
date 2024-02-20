@@ -14,12 +14,25 @@
 - `-l` = `--latest`: 최근 생성된 컨테이너 정보 출력
 - `--format`: 출력 형식을 지정합니다. Go 템플릿을 사용하여 출력 형식을 사용자 정의
 
+## $ docker image [option]
+
+> 이미지 관리
+
+- `-a`=`--all`: 모든 이미지를 표시 (기본적으로 중단 이미지는 숨겨져 있습니다).
+- `--digests`: Docker 이미지의 고유한 식별자로, 이미지의 내용을 고유하게 식별하는 데 사용되는 해시 값을 표시
+- `-f`=`--filter`: 제공된 조건에 따라 출력을 필터링합니다.
+  > docker image ls -f referance=[A_Image] -f referance=[B_Image]
+- `--format`: 사용자 정의 템플릿을 사용하여 출력 형식을 지정합니다.
+- `--no-trunc`: 출력을 자르지 않습니다.
+- `-q`=`--quiet`: 이미지 ID만 표시합니다.
+
 ## $ docker images [option]
 
 > Docker의 사용 가능한 모든 이미지의 목록 출력
 
+- `docker image ls` 와 동일
 - 이미지의 리포지토리 이름, 태그, 이미지 ID, 생성일, 크기 등의 정보가 포함
-- docker ps 옵션적용 가능
+- docker ps의 옵션들 적용 가능
 
 ## $ docker system [option]
 
