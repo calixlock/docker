@@ -1,0 +1,21 @@
+services:
+  test_maria_db:
+    image: mariadb:10.6 # mariadb 10.6 버전 이미지 사용
+    container_name: container_maria_db # container 이름 설정
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: root123# # container 생성 후 root의 비밀번호를 저장한 파일을 설정함으로서 root 비밀번호를 설정
+      MARIADB_DATABASE: test_db
+      MARIADB_USER: calixlock
+      MARIADB_PASSWORD: calixlock123#
+    volumes:
+      - ./test_maria_db/data:/var/lib/mysql # 각종 log와 index등이 volume이 저장되는 디렉토리
+      - ./test_maria_db/config/:/etc/mysql/conf.d # 이전에 나왔던 ./master/config/my.cnf 를 써줌으써 설정을 reference해줍니다.
+    ports:
+      - "3308:3306" # 이 옵션은 docker engine에게 각 container에게 포트를 수동으로 설정하게 해줍니다.
+
+  test_redis:
+    image: redis:7.0.0
+    restart: always
+    ports:
+      - "6381:6379"
