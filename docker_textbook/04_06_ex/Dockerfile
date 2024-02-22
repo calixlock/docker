@@ -6,7 +6,7 @@ RUN go build -o /web/server
 RUN chmod +x /web/server
 
 #app
-FROM diamol/diamol/base
+FROM diamol/base
 
 EXPOSE 80
 CMD ["/web/server"]
