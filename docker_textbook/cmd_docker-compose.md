@@ -56,21 +56,21 @@ services:
 
 - `environment`: 컨테이너에서 사용할 환경 변수를 설정합니다. 예:
 
-```yml
-environment: - DEBUG=1
-```
+  ```yml
+  environment: - DEBUG=1
+  ```
 
 - `env_file`: 환경 변수를 포함하는 파일의 경로를 지정합니다. 예:
 
-```yml
-env_file: .env
-```
+  ```yml
+  env_file: .env
+  ```
 
 - `depends_on`: 다른 서비스에 대한 의존성을 지정합니다.
 
-```yml
-  depends_on: - db
-```
+  ```yml
+    depends_on: - db
+  ```
 
 - `restart`: 컨테이너가 종료될 때 재시작 정책을 지정합니다.
   ```yml
@@ -79,9 +79,6 @@ env_file: .env
 - `networks`: 컨테이너가 속해야 하는 네트워크를 지정합니다.
 - `links`: 다른 서비스에 대한 링크를 생성합니다. 이는 depends_on과 비슷하지만, 서비스 간의 네트워킹을 추가로 제공합니다.
 - `healthcheck`: 컨테이너가 정상적으로 작동하는지 확인하는 데 사용되는 명령을 지정합니다.
-
-- d
-  - d
 
 ## # script execute
 
