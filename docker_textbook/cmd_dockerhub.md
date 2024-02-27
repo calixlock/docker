@@ -22,6 +22,9 @@ $ docker image tag <imageName> $dokerId/<imageName>:<tag>
 # 참조 기능으로 이미지 확인
 $ docker images --filter reference=<imageName> --filter reference='*/<imageName>'
 
-#
+# 이미지를 도커허브 레지스트리에 푸시/upload
 $ docker image push $dockerId/<imageName>:<tag>
+
+# 제대로 푸시 되었는지 확인
+$ echo "https://hub.docker.com/r/$dockerId/<imageName>/tags"
 ```
