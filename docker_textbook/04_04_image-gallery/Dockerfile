@@ -1,4 +1,4 @@
-FROM diamol/golang as builder
+FROM diamol/golang AS builder
 
 COPY main.go .
 RUN go build -o /server
@@ -8,9 +8,9 @@ FROM diamol/base
 
 ENV IMAGE_API_URL="http://iotd/image" \
     ACCESS_API_URL="http://accesslog/access-log"
-CMD [ "/web/server" ]
+CMD ["/web/server"]
 
-WORKDIR web
+WORKDIR /web
 COPY index.html .
 COPY --from=builder /server .
 RUN chmod +x server
