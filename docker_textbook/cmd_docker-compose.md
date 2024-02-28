@@ -83,9 +83,20 @@ services:
 ## # script execute
 
 ```bash
-docker-compose up
+# 실행
+docker-compose up --scale <serviceName>=n
 
-docker-compose -p <project_name> -f <file_name.yml> up -d
+# 옵션+ 실행
+docker-compose -p <projectName> -f <fileName.yml> up -d
+
+# 중지
+docker-compose stop
+
+# 중지 및 삭제
+docker-compose down
+
+# 서비스에 해당하는 로그 출력
+docker-compose logs --tail=1 <serviceName>
 ```
 
 ### 실행 옵션
@@ -93,3 +104,4 @@ docker-compose -p <project_name> -f <file_name.yml> up -d
 - `-p <project_name>` : 프로젝트 명 지정
 - `-f <docker-compose_file_name>` : 도커 컴포즈 파일 이름 별도 지정시 사용
 - `-d` : detach > 백그라운드 실행
+- `--scale <service_name>=n`: 서비스에 대해 n개만큼 컨테이너 수를 증가 시킬 수 있다.
