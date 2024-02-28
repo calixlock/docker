@@ -1,4 +1,5 @@
 services:
+  # db접속은 postgreSQL 프로그램을 통해 접속
   todo-db:
     image: diamol/postgres:11.5
     ports:
@@ -9,7 +10,7 @@ services:
   todo-web:
     image: diamol/ch06-todo-list
     ports:
-      - "8020:80"
+      - "8030:80"
     environment:
       - Database:Provider=Postgres
     depends_on:
@@ -19,8 +20,11 @@ services:
     secrets:
       - source: postgres-connection
         target: /app/config/secrets.json
+
 networks:
   app-net:
+    # external:
+    #   name: nat
 
 secrets:
   postgres-connection:
