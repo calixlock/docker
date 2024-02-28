@@ -72,10 +72,16 @@ services:
     depends_on: - db
   ```
 
-- `restart`: 컨테이너가 종료될 때 재시작 정책을 지정합니다.
+- `restart`: 컨테이너가 예기치 않게 종료/실패 할 경우 재시작 정책을 지정합니다.
+
   ```yml
-  restart: always
+  restart: unless-stopped # 컨테이너가 임의로 중지되지 않았거나, 데몬에 의해 중지되지 않는 한 항상 컨테이너 재시작
+  restart: no # 컨테이너가 자동으로 재시작되지 않음
+  restart: always # 컨테이너가 중지되면 항상 컨테이너 재시작
+  restart: on-failure[:max-retries] # 컨테이너가 0이 아닌 종료 코드로 종료되면 컨테이너를 재시작 / max-retries : 컨테이너 재시작 시도 최대 횟수 지정
+
   ```
+
 - `networks`: 컨테이너가 속해야 하는 네트워크를 지정합니다.
 - `links`: 다른 서비스에 대한 링크를 생성합니다. 이는 depends_on과 비슷하지만, 서비스 간의 네트워킹을 추가로 제공합니다.
 - `healthcheck`: 컨테이너가 정상적으로 작동하는지 확인하는 데 사용되는 명령을 지정합니다.
