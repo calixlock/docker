@@ -1,0 +1,2 @@
+# ignore secret file upload
+./docker_textbook/07_Docker-compose/07_06_ex/postgres-connection.json
