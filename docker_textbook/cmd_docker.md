@@ -55,9 +55,9 @@
 
 # # build :
 
-## $ docker images build -t [image name]:[v2] [DockerfileLocation]
+## $ docker image build -t [image name]:[v2] [DockerfileLocation]
 
-- `docker images build` Docker이미지를 빌드하는 명령어입니다. Dockerfile이라는 스크립트를 사용하여 이미지를 생성
+- `docker image build` Docker이미지를 빌드하는 명령어입니다. Dockerfile이라는 스크립트를 사용하여 이미지를 생성
 - `-t` tag 옵션 생성될 이미지에 이름 붙이는 옵션
 - `web-ping`:`v2`: 생성될 이미지의 이름 / 버전을 지정
 - `imageName`: 소문자로 작성 > 규칙

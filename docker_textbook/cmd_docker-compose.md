@@ -1,5 +1,8 @@
 ## # script
 
+1. services : 여러 컨테이너(서비스 단위)가 구성된 애플리케이션 구성
+2. networks : 서비스 컨테이너가 연결될 모든 도커 네트워크
+
 ```yaml
 ## docker-compose.yml / docker-compose.yaml
 services:
@@ -18,6 +21,10 @@ services:
       - "####:####"
   <service_name_02>:
     image: <container_image_02>
+networks:
+  <service_network_name>:
+    external: # 옵션 : default(=ture) 새로 생성하지 마라
+      name: <_network_name>
 ```
 
 ## # Script Keywords
@@ -31,7 +38,7 @@ services:
   ```yml
   Dockerfile: Dockerfile.dev
   ```
-- ports: 컨테이너와 호스트 간에 포트를 매핑합니다.
+- `ports`: 컨테이너와 호스트 간에 포트를 매핑합니다.
   ```yml
   ports:
     - "<host_port>:<container_port>"
