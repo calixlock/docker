@@ -1,5 +1,3 @@
-version: "3.7"
-
 services:
   accesslog:
     image: diamol/ch09-access-log

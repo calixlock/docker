@@ -12,6 +12,5 @@ CMD node memory-check.js && \
 HEALTHCHECK --interval=5s \
 CMD node memory-check.js
 
-
 WORKDIR /app
 COPY src/ .
