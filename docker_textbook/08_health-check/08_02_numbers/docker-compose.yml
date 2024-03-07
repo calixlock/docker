@@ -1,5 +1,3 @@
-version: "3.7"
-
 services:
   numbers-api:
     image: diamol/ch08-numbers-api:v3
