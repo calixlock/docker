@@ -1,22 +1,23 @@
+# This is the app definition for running in test.
+# It runs a Postgres container and sets the web app to use Postgres.
+# It also sets the containers to restart, and uses a bind mount for the database files.
+
 services:
   todo-db:
     image: diamol/postgres:11.5
-    # 조건 1
     restart: unless-stopped
     environment:
       - PGDATA=/var/lib/postgresql/data
-    # 조건 2
     volumes:
       - type: bind
-        source: ./postgresql/data
+        source: /data/postgres
         target: /var/lib/postgresql/data
     networks:
       - app-net
+
   todo-web:
     image: diamol/ch06-todo-list
-    # 조건 1
     restart: unless-stopped
-    # 조건 3
     ports:
       - "8050:80"
     environment:
@@ -26,9 +27,11 @@ services:
     secrets:
       - source: postgres-connection
         target: /app/config/secrets.json
+
 secrets:
   postgres-connection:
-    file: ./postgres-connection.json
+    file: postgres-connection.json
+
 networks:
   app-net:
     external:
