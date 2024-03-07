@@ -19,6 +19,11 @@ services:
       - <host_volume_directory>:<container_volume_directory>
     ports:
       - "####:####"
+    healthcheck:
+      interval: 5s # 헬스체크 실시 시간 간격 설정
+      timeout: 1s # 시간내 응답을 받지 못하면 실패로 간주하는 제한시간
+      retries: 3 # 이상감지 연속 실패 횟수 설정
+      start_period: 2s # 컨테이너 실행 후 첫 헬스 체크하는 시간 간격 의미 / 애플리케이션 시작이 오래걸리는 경우 셋팅
   <service_name_02>:
     image: <container_image_02>
 networks:
@@ -86,12 +91,22 @@ networks:
   restart: no # 컨테이너가 자동으로 재시작되지 않음
   restart: always # 컨테이너가 중지되면 항상 컨테이너 재시작
   restart: on-failure[:max-retries] # 컨테이너가 0이 아닌 종료 코드로 종료되면 컨테이너를 재시작 / max-retries : 컨테이너 재시작 시도 최대 횟수 지정
-
   ```
 
 - `networks`: 컨테이너가 속해야 하는 네트워크를 지정합니다.
 - `links`: 다른 서비스에 대한 링크를 생성합니다. 이는 depends_on과 비슷하지만, 서비스 간의 네트워킹을 추가로 제공합니다.
 - `healthcheck`: 컨테이너가 정상적으로 작동하는지 확인하는 데 사용되는 명령을 지정합니다.
+  ```yaml
+  healthcheck:
+    # 헬스체크 실시 시간 간격 설정
+    interval: 5s
+    # 시간내 응답을 받지 못하면 실패로 간주하는 제한시간
+    timeout: 1s
+    # 이상감지 연속 실패 횟수 설정
+    retries: 3
+    # 컨테이너 실행 후 첫 헬스 체크를 실시하는 시간 간격 의미 / 애플리케이션 시작이 오래걸리는 경우 셋팅 필요
+    start_period: 2s
+  ```
 
 ## # script execute
 
@@ -118,3 +133,5 @@ docker-compose logs --tail=1 <serviceName>
 - `-f <docker-compose_file_name>` : 도커 컴포즈 파일 이름 별도 지정시 사용
 - `-d` : detach > 백그라운드 실행
 - `--scale <service_name>=n`: 서비스에 대해 n개만큼 컨테이너 수를 증가 시킬 수 있다.
+
+###
