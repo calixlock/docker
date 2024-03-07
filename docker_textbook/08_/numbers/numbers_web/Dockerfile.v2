@@ -13,7 +13,7 @@ FROM diamol/dotnet-aspnet
 ENV RngApi:Url=http://numbers-api/rng
 
 CMD curl --fail http://numbers-api/rng && \
-    dotnet Numbers.Web.dll
+    dotnet Numbers.Web.dlldo
 
 WORKDIR /app
 COPY --from=builder /out/ .
